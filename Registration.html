@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>REGISTRATION FORM</title>
+</head>
+<style>
+
+    body{
+        font-family: sans-serif;
+        background-color: rgb(233, 241, 241);
+        color: rgb(56, 54, 54);
+    }
+
+    h1{
+        color: rgb(42, 42, 48);
+        margin-bottom: 20px;
+    }
+
+    .container{
+        max-width: 800px;
+        margin:40px auto;
+        padding:20px;
+        background-color: rgb(250, 250, 245);
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgb(158, 158, 158) ;
+    
+    
+    }
+    table{
+        width:100%;
+        margin-bottom: 20px;
+        border-collapse:collapse;
+    }
+    
+    td,th{
+        padding: 15px   ;
+        border: 1px solid rgb(224, 218, 218);
+        text-align: left;
+    }
+
+    th{
+        font-weight: bold;
+        background-color: #f4f4f9c0;
+    }
+    td{
+        background-color: #fafafad5;
+    }
+
+    input[type="text"],input[type="number"],input[type="email"],select{
+        padding:10px;
+        width:90%;
+        margin:5px 0;
+        border:0px solid rgb(183, 209, 231);
+        border-radius: 6px;
+        box-sizing: border-box;
+    }
+    input[type="text"],input[type="number"],input[type="email"],select:focus{
+        outline:none;
+    }
+    input[type="radio"]{
+        margin-right: 10px;
+    }
+    input[type="submit"],button{
+        width: 20%;
+        
+        background-color: rgb(52, 212, 114);
+        color:white;
+        padding:5px;
+        border:none;
+        border-radius:5px;
+        cursor:pointer;
+        transition: background-color 0.3s;
+
+
+    }
+
+    
+
+    
+
+
+
+    input[type="submit"]:hover{
+        background-color: rgb(13, 172, 106);
+    }
+    button {
+        width: auto;
+        background-color: rgb(238, 73, 73);
+
+
+    }
+    button:hover{
+        background-color:rgb(238, 41, 41);
+    }
+    .action{
+        text-align: center;
+    }
+
+
+    
+
+
+
+    
+   
+
+    
+    
+        
+    
+
+</style>
+
+
+<body>
+    <div class="container">
+    <center>
+        <h1>STUDENT REGISTRATION</h1>
+        <form id="studentform">
+            <table border="1">
+                <tr>
+                    <th>Name</th>
+                    <td>
+                        <input type="text" placeholder="Enter your name" id="studentname" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Age</th>
+                    <td>
+                        <input type="Number" placeholder="Enter your age" id="studentage" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Gender</th>
+                    <td>
+                        <input type="radio" name="gender" value="male" required>Male
+                        <input type="radio" name="gender" value="female" required>Female
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Course</th>
+                    <td>
+                        <select id="course">
+                            <option value="c++">c++</option>
+                            <option value="python">python</option>
+                            <option value="Java">Java</option>
+                            <option value="Js">Js</option>
+                            <option value="c">c</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Email</th>
+                    <td>
+                        <input type="email" id="studentemail" placeholder="Enter your email" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" class="action"><input type="submit" value="submit" ></td>
+                    
+                </tr>
+            </table>
+
+                <h2>Student Entry</h2>
+                <table border="1" id ="studententry">
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Course</th>
+                        <th>Gender</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </table>
+
+
+
+            
+        </form>
+    </center>
+</div>
+
+    <script>
+        document.getElementById("studentform").addEventListener('submit',function (event) {
+            event.preventDefault()
+
+            var name = document.getElementById("studentname").value
+            var age = document.getElementById("studentage").value
+            var gender = document.querySelector("input[name='gender']:checked").value
+            var course = document.getElementById("course").value
+            var email = document.getElementById("studentemail").value
+
+            var entry=document.getElementById("studententry")
+            var newrow= entry.insertRow()
+
+            newrow.insertCell(0).innerText=name
+            newrow.insertCell(1).innerText=age
+            newrow.insertCell(2).innerText=gender
+            newrow.insertCell(3).innerText=course
+            newrow.insertCell(4).innerText=email
+            newrow.insertCell(5).innerHTML = "<button onclick='deleteRow(this)'>delete</button"
+             
+            document.getElementById("studentform").reset()
+            
+                        
+        })
+
+        function deleteRow(button){
+            var row = button.parentNode.parentNode
+            row.parentNode.removeChild(row)
+
+
+        }
+
+</script>
+    
+</body>
+</html>
